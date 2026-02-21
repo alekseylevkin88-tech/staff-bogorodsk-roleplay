@@ -49,19 +49,21 @@
             font-weight: 500;
         }
 
+        /* Использование Flexbox вместо Grid для идеальной центровки */
         .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, auto)); 
-    gap: 40px;
-    width: 100%;
-    max-width: 1200px;
-    justify-content: center;
-}
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            width: 100%;
+            max-width: 1200px;
+        }
 
         .admin-link {
             text-decoration: none;
             color: inherit;
             display: block;
+            flex: 0 1 280px; /* Задает базовую ширину карточки */
         }
 
         .admin-card {
@@ -73,6 +75,8 @@
             text-align: center;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
+            height: 100%; /* Чтобы все карточки были одной высоты */
+            box-sizing: border-box;
         }
 
         .admin-card:hover {
@@ -186,6 +190,3 @@
 
 </body>
 </html>
-
-
-
