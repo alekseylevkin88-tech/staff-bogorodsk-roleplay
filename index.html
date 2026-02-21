@@ -9,11 +9,9 @@
             --accent-blue: #3b82f6;
             --accent-red: #ef4444;
             --accent-gold: #f59e0b;
-            /* Сделал фон темнее, как на фото 2 */
             --bg-gradient: radial-gradient(circle at top, #0a1120 0%, #050814 100%);
             --card-bg: rgba(15, 23, 42, 0.8);
             --text: #f8fafc;
-            /* Цвет заголовка из фото 1 */
             --header-blue: #3a86ff; 
         }
 
@@ -31,38 +29,60 @@
 
         .header-section {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
         h1 {
             font-size: 42px;
             text-transform: uppercase;
             letter-spacing: 4px;
-            /* Новый цвет заголовка */
             color: var(--header-blue);
-            text-shadow: 0 0 20px rgba(58, 134, 255, 0.4);
             margin: 0;
             font-weight: 900;
+            /* Анимация сияния */
+            animation: glow 3s ease-in-out infinite alternate;
         }
 
-        .subtitle {
-            color: #64748b;
-            margin-top: 15px;
-            letter-spacing: 2px;
-            font-size: 16px;
-            font-weight: 500;
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(58, 134, 255, 0.4), 0 0 20px rgba(58, 134, 255, 0.2);
+            }
+            to {
+                text-shadow: 0 0 25px rgba(58, 134, 255, 0.8), 0 0 40px rgba(58, 134, 255, 0.4);
+            }
         }
 
-        /* Контейнер для категорий */
+        .category-title {
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #475569;
+            margin-bottom: 30px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .category-title::before, .category-title::after {
+            content: "";
+            height: 1px;
+            width: 50px;
+            background: linear-gradient(to right, transparent, #1e293b);
+        }
+        .category-title::after { background: linear-gradient(to left, transparent, #1e293b); }
+
         .category-wrapper {
             width: 100%;
             max-width: 1200px;
             display: flex;
             flex-direction: column;
-            gap: 60px; /* Расстояние между строками */
+            gap: 80px;
         }
 
-        /* Общая сетка для каждой строки */
         .team-row {
             display: flex;
             flex-wrap: wrap;
@@ -104,7 +124,7 @@
             object-fit: cover;
             margin-bottom: 25px;
             border: 3px solid var(--accent-blue);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
         }
 
         .nickname {
@@ -121,14 +141,13 @@
             letter-spacing: 1.5px;
         }
 
-        /* Цвета по рангам */
-        .rank-dev .avatar { border-color: var(--accent-gold); box-shadow: 0 0 20px rgba(245, 158, 11, 0.4); }
+        .rank-dev .avatar { border-color: var(--accent-gold); box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
         .rank-dev .nickname { color: var(--accent-gold); }
 
-        .rank-lead .avatar { border-color: var(--accent-red); box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); }
+        .rank-lead .avatar { border-color: var(--accent-red); box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
         .rank-lead .nickname { color: var(--accent-red); }
 
-        .rank-staff .avatar { border-color: var(--accent-blue); box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+        .rank-staff .avatar { border-color: var(--accent-blue); box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
         .rank-staff .nickname { color: var(--accent-blue); }
     </style>
 </head>
@@ -136,60 +155,68 @@
 
     <div class="header-section">
         <h1>КОМАНДА ПРОЕКТА</h1>
-        <div class="subtitle">Администрация Bogorodsk RolePlay</div>
     </div>
 
     <div class="category-wrapper">
         
-        <div class="team-row">
-            <a href="https://discord.com/users/1416297491913248820" target="_blank" class="admin-link">
-                <div class="admin-card rank-dev">
-                    <img src="1c2377d064fad970a4e788c35eefb8f3.png" alt=".merenka._" class="avatar">
-                    <div class="nickname">.merenka._</div>
-                    <div class="rank">Разработчик</div>
-                </div>
-            </a>
-            <a href="https://discord.com/users/830086511478571008" target="_blank" class="admin-link">
-                <div class="admin-card rank-dev">
-                    <img src="e8b6c28e82ad3e2398eb0af41408d748.png" alt="zeroturkey12" class="avatar">
-                    <div class="nickname">zeroturkey12</div>
-                    <div class="rank">Разработчик</div>
-                </div>
-            </a>
+        <div class="category-group">
+            <div class="category-title">Разработчики</div>
+            <div class="team-row">
+                <a href="https://discord.com/users/1416297491913248820" target="_blank" class="admin-link">
+                    <div class="admin-card rank-dev">
+                        <img src="1c2377d064fad970a4e788c35eefb8f3.png" alt=".merenka._" class="avatar">
+                        <div class="nickname">.merenka._</div>
+                        <div class="rank">Разработчик</div>
+                    </div>
+                </a>
+                <a href="https://discord.com/users/830086511478571008" target="_blank" class="admin-link">
+                    <div class="admin-card rank-dev">
+                        <img src="e8b6c28e82ad3e2398eb0af41408d748.png" alt="kltny" class="avatar">
+                        <div class="nickname">kltny</div>
+                        <div class="rank">Разработчик</div>
+                    </div>
+                </a>
+            </div>
         </div>
 
-        <div class="team-row">
-            <a href="https://discord.com/users/539446833043472385" target="_blank" class="admin-link">
-                <div class="admin-card rank-lead">
-                    <img src="867d37e54dbe6a114bfd3bad4a81610a.png" alt="rvc_army" class="avatar">
-                    <div class="nickname">rvc_army</div>
-                    <div class="rank">Руководитель Администрации</div>
-                </div>
-            </a>
-            <a href="https://discord.com/users/625255619569647616" target="_blank" class="admin-link">
-                <div class="admin-card rank-lead">
-                    <img src="3e874150d2e418646418c7dd6b38b8ad.png" alt="h1kken_zzz" class="avatar">
-                    <div class="nickname">h1kken_zzz</div>
-                    <div class="rank">Зам. Руководителя Администрации</div>
-                </div>
-            </a>
+        <div class="category-group">
+            <div class="category-title">Высшая Администрация</div>
+            <div class="team-row">
+                <a href="https://discord.com/users/539446833043472385" target="_blank" class="admin-link">
+                    <div class="admin-card rank-lead">
+                        <img src="867d37e54dbe6a114bfd3bad4a81610a.png" alt="rvc_army" class="avatar">
+                        <div class="nickname">rvc_army</div>
+                        <div class="rank">Руководитель Администрации</div>
+                    </div>
+                </a>
+                <a href="https://discord.com/users/625255619569647616" target="_blank" class="admin-link">
+                    <div class="admin-card rank-lead">
+                        <img src="3e874150d2e418646418c7dd6b38b8ad.png" alt="h1kken_zzz" class="avatar">
+                        <div class="nickname">h1kken_zzz</div>
+                        <div class="rank">Зам. Руководителя Администрации</div>
+                    </div>
+                </a>
+            </div>
         </div>
 
-        <div class="team-row">
-            <a href="https://discord.com/users/821374825451749376" target="_blank" class="admin-link">
-                <div class="admin-card rank-staff">
-                    <img src="bee066fae70c24d4d74efb01b5291904.png" alt="arabicus" class="avatar">
-                    <div class="nickname">arabicus</div>
-                    <div class="rank">Администратор</div>
-                </div>
-            </a>
-            <a href="https://discord.com/users/1416184044005228748" target="_blank" class="admin-link">
-                <div class="admin-card rank-staff">
-                    <img src="677fb641ad035115e18b24c4925de1a9.png" alt="_user565_" class="avatar">
-                    <div class="nickname">_user565_</div>
-                    <div class="rank">Следящий за Дискордом</div>
-                </div>
-            </a>
+        <div class="category-group">
+            <div class="category-title">Персонал</div>
+            <div class="team-row">
+                <a href="https://discord.com/users/821374825451749376" target="_blank" class="admin-link">
+                    <div class="admin-card rank-staff">
+                        <img src="bee066fae70c24d4d74efb01b5291904.png" alt="arabicus" class="avatar">
+                        <div class="nickname">arabicus</div>
+                        <div class="rank">Администратор</div>
+                    </div>
+                </a>
+                <a href="https://discord.com/users/1416184044005228748" target="_blank" class="admin-link">
+                    <div class="admin-card rank-staff">
+                        <img src="677fb641ad035115e18b24c4925de1a9.png" alt="_user565_" class="avatar">
+                        <div class="nickname">_user565_</div>
+                        <div class="rank">Следящий за Дискордом</div>
+                    </div>
+                </a>
+            </div>
         </div>
 
     </div>
